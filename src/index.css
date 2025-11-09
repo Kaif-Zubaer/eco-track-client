@@ -10,7 +10,8 @@
     name: "light";
     default: true;
     --color-primary: #6ab007;
-    --color-secondary: teal;
+    --color-secondary: #fafafa;
+    --color-accent: #33572b;
 }
 
 body {
@@ -22,7 +23,7 @@ a.active {
 }
 
 @media (max-width: 768px) {
-  a.active {
-    color: white;
-  }
+    a.active {
+        color: white;
+    }
 }
