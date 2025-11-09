@@ -5,6 +5,8 @@ import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import ErrorLayout from "../layouts/ErrorLayout";
+import Challenges from "../components/Challenges";
+import MyActivities from "../components/MyActivities";
 
 const router = createBrowserRouter([
     {
@@ -14,6 +16,14 @@ const router = createBrowserRouter([
             {
                 path: "",
                 element: <HomePage></HomePage>,
+            },
+            {
+                path: "/challenges",
+                element: <Challenges></Challenges>,
+            },
+            {
+                path: "?my-activities",
+                element: <MyActivities></MyActivities>,
             },
         ]
     },
