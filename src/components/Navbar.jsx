@@ -17,7 +17,8 @@ const Navbar = () => {
         <li className='py-3 pl-4 border-b-2 border-white'><NavLink to="/">Home</NavLink></li>
         <li className='py-3 pl-4 border-b-2 border-white'><NavLink to="/challenges">Challenges</NavLink></li>
         <li className='py-3 pl-4 border-b-2 border-white'><NavLink to="/my-activities">My Activities</NavLink></li>
-        <li className='text-start py-3 pl-4  border-b-2 border-white w-full'><Link to="/login" >login</Link></li>
+        <li className='text-start py-3 pl-4  border-b-2 border-white w-full'><Link to="/auth/login" >login</Link></li>
+        <li className='text-start py-3 pl-4  border-b-2 border-white w-full'><Link to="/auth/register" >Register</Link></li>
     </>
 
     return (
@@ -47,8 +48,8 @@ const Navbar = () => {
                 </div>
             </div>
             <div className='hidden md:flex justify-center items-center gap-4'>
-                <Link to="/login" className='border-2 border-primary text-primary font-medium rounded-sm px-6 py-1 hover:bg-primary hover:text-white cursor-pointer duration-400'>Login</Link>
-                <Link to="/register" className='border-2 border-primary text-primary font-medium rounded-sm px-4 py-1 hover:bg-primary hover:text-white cursor-pointer duration-350'>Register</Link>
+                <Link to="/auth/login" className='border-2 border-primary text-primary font-medium rounded-sm px-6 py-1 hover:bg-primary hover:text-white cursor-pointer duration-400'>Login</Link>
+                <Link to="/auth/register" className='border-2 border-primary text-primary font-medium rounded-sm px-4 py-1 hover:bg-primary hover:text-white cursor-pointer duration-350'>Register</Link>
             </div>
         </nav>
     );

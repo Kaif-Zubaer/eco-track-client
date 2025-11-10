@@ -8,6 +8,7 @@ import ErrorLayout from "../layouts/ErrorLayout";
 import Challenges from "../components/Challenges";
 import MyActivities from "../components/MyActivities";
 import Loading from "../components/Loading";
+import ForgetPasswordPage from "../pages/ForgetPasswordPage";
 
 const router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
             {
                 path: "/auth/login",
                 element: <LoginPage></LoginPage>,
+            },
+            {
+                path: "/auth/forget-password",
+                element: <ForgetPasswordPage></ForgetPasswordPage>,
             },
             {
                 path: "/auth/register",
