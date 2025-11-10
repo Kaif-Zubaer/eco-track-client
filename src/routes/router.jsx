@@ -7,6 +7,7 @@ import RegisterPage from "../pages/RegisterPage";
 import ErrorLayout from "../layouts/ErrorLayout";
 import Challenges from "../components/Challenges";
 import MyActivities from "../components/MyActivities";
+import Loading from "../components/Loading";
 
 const router = createBrowserRouter([
     {
@@ -19,7 +20,9 @@ const router = createBrowserRouter([
             },
             {
                 path: "/challenges",
+                loader: () => fetch('http://localhost:3000/challenges'),
                 element: <Challenges></Challenges>,
+                hydrateFallbackElement: <Loading></Loading>,
             },
             {
                 path: "?my-activities",
