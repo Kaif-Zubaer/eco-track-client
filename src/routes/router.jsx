@@ -10,6 +10,7 @@ import MyActivities from "../components/MyActivities";
 import Loading from "../components/Loading";
 import ForgetPasswordPage from "../pages/ForgetPasswordPage";
 import MyProfilePage from "../../MyProfilePage";
+import ChallengeDetails from "../components/ChallengeDetails";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +29,12 @@ const router = createBrowserRouter([
                 path: "/challenges",
                 loader: () => fetch('http://localhost:3000/challenges'),
                 element: <Challenges></Challenges>,
+                hydrateFallbackElement: <Loading></Loading>,
+            },
+            {
+                path: "/challenges/:id",
+                loader: ({ params }) => fetch(`http://localhost:3000/challenges/${params.id}`),
+                element: <ChallengeDetails></ChallengeDetails>,
                 hydrateFallbackElement: <Loading></Loading>,
             },
             {

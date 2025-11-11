@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FaUserFriends } from "react-icons/fa";
 import { IoTimeSharp } from "react-icons/io5";
-import { useLoaderData } from 'react-router';
+import { Link, useLoaderData } from 'react-router';
 import Loading from './Loading';
 import notFound from '../assets/notFound.jpg';
 
@@ -40,7 +40,7 @@ const Challenges = () => {
                         ? <div className='mx-2  my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
                             {
                                 challenges.map(challenge => (
-                                    <div key={challenge._id} className='border-2 border-primary rounded-sm p-5 bg-base-200'>
+                                    <div key={challenge._id} className='border-2 border-primary rounded-sm p-5 bg-base-200 pb-7'>
                                         <img className='rounded-md' src={challenge.imageUrl} alt="" />
                                         <h1 className='mt-5 mb-2 text-lg text-accent font-bold'>{challenge.title}</h1>
                                         <div className='flex justify-between items-center mb-2'>
@@ -55,7 +55,7 @@ const Challenges = () => {
                                             </div>
                                         </div>
                                         <p className='line-clamp-3 mb-5'>{challenge.description}</p>
-                                        <button className='border-2 border-accent bg-accent p-2 px-4 rounded-sm text-white font-bold cursor-pointer hover:bg-white hover:text-accent duration-350'>View details</button>
+                                        <Link to={`/challenges/${challenge._id}`} className='border-2 border-accent bg-accent p-2 px-4 rounded-sm text-white font-bold cursor-pointer hover:bg-white hover:text-accent duration-350'>View details</Link>
                                     </div>
                                 ))
                             }

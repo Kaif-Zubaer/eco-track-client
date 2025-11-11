@@ -53,7 +53,7 @@ const LoginPage = () => {
 
     return (
         <div className='flex flex-col justify-center items-center my-15 mx-8'>
-            <h1 className='text-xl text-center text-primary font-bold mb-6'>Welcome Back to <br /> EcoTrack</h1>
+            <h1 className='text-2xl text-center text-primary font-bold mb-6'>Login to EcoTrack</h1>
             <div className='w-full md:w-120 rounded-md px-6 py-12 bg-no-repeat bg-cover bg-center bg-[url(https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjk5MC0wNWEta3MwMXF5bGQuanBn.jpg)]'>
                 <form onSubmit={handleLogin}>
                     <div className='flex flex-col'>

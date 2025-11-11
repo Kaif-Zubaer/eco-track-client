@@ -93,7 +93,8 @@ const RegisterPage = () => {
 
     return (
         <div className='flex flex-col justify-center items-center my-15 mx-8'>
-            <h1 className='text-xl text-center text-primary font-bold mb-6'>Start Your Sustainability Journey <br /> with EcoTrack</h1>
+            <h1 className='text-xl text-center text-primary font-bold mb-6 border-b-2 w-full md:w-120 pb-4'>Start Your Sustainability Journey <br /> with EcoTrack</h1>
+            <h1 className='text-2xl text-center text-primary font-bold mb-10'>Join EcoTrack</h1>
             <div className='w-full md:w-120 rounded-md px-6 py-8 bg-no-repeat bg-cover bg-center bg-[url(https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjk5MC0wNWEta3MwMXF5bGQuanBn.jpg)]'>
                 <form onSubmit={handleSignup}>
                     <div className='flex flex-col'>

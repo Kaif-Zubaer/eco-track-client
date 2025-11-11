@@ -29,7 +29,7 @@ const FooterPrimary = () => {
                     </Link>
                     <p className='text-white mb-6 lg:text-lg lg:mb-8'>A community platform where eco-conscious people discover and join sustainability challenges, share practical eco-tips, browse local green events, and track personal environmental impact — focused on measurable, community-driven progress.</p>
                 </div>
-                <div className='bg-primary flex justify-center items-center py-8 rounded-md mb-6 xl:col-span-2'>
+                <div className='bg-primary flex justify-center items-center py-8 rounded-md mb-6 xl:col-span-2 md:gap-6 xl:gap-10'>
                     <img className='hidden md:block h-40 animate-bounce' src={fooeterPlant} alt="" />
                     <div className='flex flex-col justify-center items-center gap-4'>
                         <h1 className='text-xl font-bold text-center px-4'>Sign Up To Get Updates & News About Us..</h1>
