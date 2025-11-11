@@ -5,15 +5,22 @@ import { HiMenu } from "react-icons/hi";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
+import UserDropDown from './UserDropDown';
 
 const Navbar = () => {
     const { user, userLogout } = use(AuthContext);
 
     const handleLogout = () => {
-        userLogout();
-        setTimeout(() => {
-            toast.success('Logout successful');
-        }, 300);
+        userLogout()
+            .then(() => {
+                setTimeout(() => {
+                    toast.success('Logout successful');
+                }, 300);
+            })
+            .catch(err => {
+                toast.error(err.code);
+            })
+
     }
 
     const [menu, setMenu] = useState(false);
@@ -26,6 +33,7 @@ const Navbar = () => {
 
     const linksSmallDevice = <>
         <li className='py-3 pl-4 border-b-2 border-white'><NavLink to="/">Home</NavLink></li>
+        <li className='py-3 pl-4 border-b-2 border-white'><NavLink to="/my-profile">My Profile</NavLink></li>
         <li className='py-3 pl-4 border-b-2 border-white'><NavLink to="/challenges">Challenges</NavLink></li>
         <li className='py-3 pl-4 border-b-2 border-white'><NavLink to="/my-activities">My Activities</NavLink></li>
         {
@@ -39,10 +47,10 @@ const Navbar = () => {
     </>
 
     return (
-        <nav className='flex justify-between items-center p-2 md:px-6 py-4 border-b border-primary'>
+        <nav className='flex justify-between items-center p-2 pr-4 md:pl-6 md:pr-10 py-4 border-b border-primary'>
             <div className='flex justify-center items-center gap-16'>
                 <div className='flex justify-center items-center gap-2'>
-                    <span onClick={() => setMenu(!menu)}>
+                    <span onClick={() => setMenu(!menu)} className='z-10'>
                         {
                             menu
                                 ? <IoIosCloseCircleOutline className='md:hidden text-primary w-8 h-8' />
@@ -64,12 +72,20 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
+            <div className='md:hidden animate-pulse'>
+                {
+                    user &&
+                    <div className='flex justify-center items-center gap-2'>
+                        <img className="h-8 w-8 rounded-full border-2" src={user.photoURL} alt="" />
+                        <h3 className="text-lg font-bold">Hi, {user.displayName ? user.displayName.split(' ')[0] : 'User'}!</h3>
+                    </div>
+                }
+            </div>
             <div className='hidden md:flex justify-center items-center gap-4'>
                 {
                     user
                         ? <>
-                            <Link to='/my-profile'><img className="h-10 w-10 rounded-4xl border-1 border-primary shadow-[0_0_15px_#6ab007] animate-pulse" src={user.photoURL} alt="" /></Link>
-                            <button onClick={handleLogout} className='border-2 border-primary text-primary font-medium rounded-sm px-5 py-1 hover:bg-primary hover:text-white cursor-pointer duration-400'>Logout</button>
+                            <UserDropDown user={user} handleLogout={handleLogout}></UserDropDown>
                         </>
                         : <>
                             <Link to="/auth/login" className='border-2 border-primary text-primary font-medium rounded-sm px-6 py-1 hover:bg-primary hover:text-white cursor-pointer duration-400'>Login</Link>
