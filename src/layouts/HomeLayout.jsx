@@ -1,20 +1,19 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
-import HomePage from '../pages/HomePage';
-import Footer from '../components/Footer';
 import { Outlet } from 'react-router';
+import FooterPrimary from '../components/FooterPrimary';
 
 const HomeLayout = () => {
     return (
-        <div>
+        <div className='flex flex-col min-h-screen'>
             <header>
                 <Navbar></Navbar>
             </header>
-            <main>
+            <main className='flex-1'>
                 <Outlet></Outlet>
             </main>
             <footer>
-                <Footer></Footer>
+                <FooterPrimary></FooterPrimary>
             </footer>
         </div>
     );
