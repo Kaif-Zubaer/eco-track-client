@@ -1,10 +1,21 @@
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import logo from '../assets/Untitled.png'
 import { Link, NavLink } from 'react-router';
 import { HiMenu } from "react-icons/hi";
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import { AuthContext } from '../context/AuthContext';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
+    const { user, userLogout } = use(AuthContext);
+
+    const handleLogout = () => {
+        userLogout();
+        setTimeout(() => {
+            toast.success('Logout successful');
+        }, 300);
+    }
+
     const [menu, setMenu] = useState(false);
 
     const links = <>
@@ -17,8 +28,14 @@ const Navbar = () => {
         <li className='py-3 pl-4 border-b-2 border-white'><NavLink to="/">Home</NavLink></li>
         <li className='py-3 pl-4 border-b-2 border-white'><NavLink to="/challenges">Challenges</NavLink></li>
         <li className='py-3 pl-4 border-b-2 border-white'><NavLink to="/my-activities">My Activities</NavLink></li>
-        <li className='text-start py-3 pl-4  border-b-2 border-white w-full'><Link to="/auth/login" >login</Link></li>
-        <li className='text-start py-3 pl-4  border-b-2 border-white w-full'><Link to="/auth/register" >Register</Link></li>
+        {
+            user
+                ? <li><button onClick={handleLogout} className='text-start py-3 pl-4  border-b-2 border-white w-full'>Logout</button></li>
+                : <>
+                    <li className='text-start py-3 pl-4  border-b-2 border-white w-full'><Link to="/auth/login" >login</Link></li>
+                    <li className='text-start py-3 pl-4  border-b-2 border-white w-full'><Link to="/auth/register" >Register</Link></li>
+                </>
+        }
     </>
 
     return (
@@ -48,8 +65,17 @@ const Navbar = () => {
                 </div>
             </div>
             <div className='hidden md:flex justify-center items-center gap-4'>
-                <Link to="/auth/login" className='border-2 border-primary text-primary font-medium rounded-sm px-6 py-1 hover:bg-primary hover:text-white cursor-pointer duration-400'>Login</Link>
-                <Link to="/auth/register" className='border-2 border-primary text-primary font-medium rounded-sm px-4 py-1 hover:bg-primary hover:text-white cursor-pointer duration-350'>Register</Link>
+                {
+                    user
+                        ? <>
+                            <Link to='/my-profile'><img className="h-10 w-10 rounded-4xl border-1 border-primary shadow-[0_0_15px_#6ab007] animate-pulse" src={user.photoURL} alt="" /></Link>
+                            <button onClick={handleLogout} className='border-2 border-primary text-primary font-medium rounded-sm px-5 py-1 hover:bg-primary hover:text-white cursor-pointer duration-400'>Logout</button>
+                        </>
+                        : <>
+                            <Link to="/auth/login" className='border-2 border-primary text-primary font-medium rounded-sm px-6 py-1 hover:bg-primary hover:text-white cursor-pointer duration-400'>Login</Link>
+                            <Link to="/auth/register" className='border-2 border-primary text-primary font-medium rounded-sm px-4 py-1 hover:bg-primary hover:text-white cursor-pointer duration-350'>Register</Link>
+                        </>
+                }
             </div>
         </nav>
     );
