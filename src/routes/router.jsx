@@ -11,6 +11,8 @@ import Loading from "../components/Loading";
 import ForgetPasswordPage from "../pages/ForgetPasswordPage";
 import MyProfilePage from "../../MyProfilePage";
 import ChallengeDetails from "../components/ChallengeDetails";
+import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
 
 const router = createBrowserRouter([
     {
@@ -23,7 +25,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/my-profile",
-                element: <MyProfilePage></MyProfilePage>,
+                element: <PrivateRoute><MyProfilePage></MyProfilePage></PrivateRoute>,
             },
             {
                 path: "/challenges",
@@ -39,7 +41,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/my-activities",
-                element: <MyActivities></MyActivities>,
+                element: <PrivateRoute><MyActivities></MyActivities></PrivateRoute>,
             },
         ]
     },
@@ -49,15 +51,15 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/auth/login",
-                element: <LoginPage></LoginPage>,
+                element: <PublicRoute><LoginPage></LoginPage></PublicRoute>,
             },
             {
                 path: "/auth/forget-password",
-                element: <ForgetPasswordPage></ForgetPasswordPage>,
+                element: <PublicRoute><ForgetPasswordPage></ForgetPasswordPage></PublicRoute>,
             },
             {
                 path: "/auth/register",
-                element: <RegisterPage></RegisterPage>
+                element: <PublicRoute><RegisterPage></RegisterPage></PublicRoute>,
             },
         ]
     },
