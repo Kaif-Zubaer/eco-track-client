@@ -18,12 +18,12 @@ const ActiveChallenges = () => {
     }, [])
 
     return (
-        <div className='my-20 mx-6 md:mx-10 lg:mx-30'>
+        <div className='mt-20 mb-10 mx-6 md:mx-10 lg:mx-30'>
             <h1 className='text-center text-3xl font-bold text-accent'>Active Challenges</h1>
             {
                 loading
                     ? <Loading></Loading>
-                    : <div className='mx-2  my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6'>
+                    : <div className='mx-2  my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6'>
                         {
                             challenges.slice(0, 5).map(challenge => (
                                 <div key={challenge._id} className='border-2 border-primary rounded-sm p-5 bg-base-200 pb-7'>

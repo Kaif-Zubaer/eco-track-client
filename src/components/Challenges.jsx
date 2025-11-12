@@ -37,7 +37,7 @@ const Challenges = () => {
                 loading
                     ? <Loading></Loading>
                     : filteredChallenges.length > 0
-                        ? <div className='mx-2  my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6'>
+                        ? <div className='mx-2  my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6'>
                             {
                                 challenges.map(challenge => (
                                     <div key={challenge._id} className='border-2 border-primary rounded-sm p-5 bg-base-200 pb-7'>
