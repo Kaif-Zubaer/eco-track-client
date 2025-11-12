@@ -20,7 +20,7 @@ const UserDropDown = ({ user, handleLogout }) => {
     return (
         <div>
             <div className="relative" ref={dropdownRef}>
-                <div onClick={() => setOpen(!open)} className="flex justify-center items-center gap-2 cursor-pointer animate-pulse">
+                <div onClick={() => setOpen(!open)} className="flex justify-center items-center gap-4 cursor-pointer animate-pulse">
                     <img className="h-8 w-8 rounded-full border-2" src={user.photoURL} alt="" />
                     <h3 className="text-lg font-bold">Hi, {user.displayName ? user.displayName.split(' ')[0] : 'User'}!</h3>
                 </div>

@@ -45,11 +45,11 @@ const Challenges = () => {
                                         <h1 className='mt-5 mb-2 text-lg text-accent font-bold'>{challenge.title}</h1>
                                         <div className='flex justify-between items-center mb-2'>
                                             <p className='border border-primary py-1 px-2 rounded-3xl text-sm text-primary font-medium bg-white'>{challenge.category}</p>
-                                            <div className='flex justify-center items-center gap-2'>
+                                            <div className='flex justify-center items-center gap-4'>
                                                 <FaUserFriends className='text-accent w-6 h-6' />
                                                 <p className='text-lg text-accent font-bold'>{challenge.participants}</p>
                                             </div>
-                                            <div className='flex justify-center items-center gap-2'>
+                                            <div className='flex justify-center items-center gap-4'>
                                                 <IoTimeSharp className='text-accent w-6 h-6' />
                                                 <p className='text-lg text-accent font-bold'>{challenge.duration}</p>
                                             </div>

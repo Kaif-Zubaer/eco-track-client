@@ -133,11 +133,11 @@ const RegisterPage = () => {
                         <label className='text-accent text-sm font-bold'>Accept Terms & Conditions</label>
                     </div>
                     <div className='flex flex-col gap-1'>
-                        <button className='flex justify-center items-center gap-2 bg-accent text-white font-semibold p-2 rounded-sm border-2 hover:opacity-85 duration-300 cursor-pointer' type='submit'>
+                        <button className='flex justify-center items-center gap-4 bg-accent text-white font-semibold p-2 rounded-sm border-2 hover:opacity-85 duration-300 cursor-pointer' type='submit'>
                             <MdOutlineMailOutline className='text-white w-7 h-7' />
                             Sign up with Email
                         </button>
-                        <button onClick={handleGoogleLogin} className='flex justify-center items-center gap-2 bg-accent text-white font-semibold p-2 rounded-sm border-2 hover:opacity-85 duration-300 cursor-pointer' type='button'>
+                        <button onClick={handleGoogleLogin} className='flex justify-center items-center gap-4 bg-accent text-white font-semibold p-2 rounded-sm border-2 hover:opacity-85 duration-300 cursor-pointer' type='button'>
                             <FaGoogle className='text-white w-7 h-7' />
                             Sign up with Google
                         </button>

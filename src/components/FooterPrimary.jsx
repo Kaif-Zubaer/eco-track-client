@@ -23,7 +23,7 @@ const FooterPrimary = () => {
         <div className='bg-black pt-10 pb-4 px-6 md:px-10 md:pt-12 lg:px-15 2xl:px-25 2xl:gap-15'>
             <div className='xl:grid xl:grid-cols-3 xl:gap-10 justify-center items-center xl:mb-6'>
                 <div>
-                    <Link className='flex items-center gap-2 mb-4'>
+                    <Link className='flex items-center gap-4 mb-4'>
                         <img className='w-10 h-10' src={logo} alt="" />
                         <h1 className='text-3xl text-primary font-bold'>EcoTrack</h1>
                     </Link>
@@ -51,7 +51,7 @@ const FooterPrimary = () => {
                 </ul>
             </div>
             <div>
-                <ul className='text-white grid grid-cols-2 border-y border-white justify-between mt-6 py-4 text-lg gap-2 cursor-pointer font-medium lg:gap-4 xl:grid-cols-3'>
+                <ul className='text-white grid grid-cols-2 border-y border-white justify-between mt-6 py-4 text-lg gap-4 cursor-pointer font-medium lg:gap-4 xl:grid-cols-3'>
                     <li className='hover:text-primary hover:underline'>About Us</li>
                     <li className='hover:text-primary hover:underline'>Privacy Policy</li>
                     <li className='hover:text-primary hover:underline'>Blog</li>

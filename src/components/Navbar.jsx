@@ -49,7 +49,7 @@ const Navbar = () => {
     return (
         <nav className='flex justify-between items-center p-2 pr-4 md:pl-6 md:pr-10 py-4 border-b border-primary'>
             <div className='flex justify-center items-center gap-16'>
-                <div className='flex justify-center items-center gap-2'>
+                <div className='flex justify-center items-center gap-4'>
                     <span onClick={() => setMenu(!menu)} className='z-10'>
                         {
                             menu
@@ -61,7 +61,7 @@ const Navbar = () => {
                             {linksSmallDevice}
                         </ul>
                     </span>
-                    <Link className='flex justify-center items-center gap-2'>
+                    <Link className='flex justify-center items-center gap-4'>
                         <img className='w-10 h-10' src={logo} alt="" />
                         <h1 className='text-3xl text-primary font-bold'>EcoTrack</h1>
                     </Link>
@@ -75,7 +75,7 @@ const Navbar = () => {
             <div className='md:hidden animate-pulse'>
                 {
                     user &&
-                    <div className='flex justify-center items-center gap-2'>
+                    <div className='flex justify-center items-center gap-4'>
                         <img className="h-8 w-8 rounded-full border-2" src={user.photoURL} alt="" />
                         <h3 className="text-lg font-bold">Hi, {user.displayName ? user.displayName.split(' ')[0] : 'User'}!</h3>
                     </div>

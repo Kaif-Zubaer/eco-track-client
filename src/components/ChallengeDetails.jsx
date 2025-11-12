@@ -21,7 +21,7 @@ const ChallengeDetails = () => {
 
     return (
         <div>
-            <h3 className='flex items-center mx-3 my-2 text-xl gap-2 font-bold text-accent'><IoMdArrowRoundBack /> Back to Challenges</h3>
+            <h3 className='flex items-center mx-3 my-2 text-xl gap-4 font-bold text-accent'><IoMdArrowRoundBack /> Back to Challenges</h3>
             <div className='mt-3 mb-10'>
                 <div>
                     <img src={imageUrl} alt="" />
@@ -37,7 +37,7 @@ const ChallengeDetails = () => {
                     </div>
                     <div className='flex justify-between pr-8 py-3 text-lg font-bold text-accent border-b-2 border-primary'>
                         <p>Duration: <span className='text-primary'>{duration} Days</span></p>
-                        <p className='flex justify-center items-center gap-2'><FaUser className='text-primary' /> Participants: <span className='text-primary'>{participants}</span></p>
+                        <p className='flex justify-center items-center gap-4'><FaUser className='text-primary' /> Participants: <span className='text-primary'>{participants}</span></p>
                     </div>
                     <h3>{impactMetric}</h3>
                     <p>{createdBy}</p>

@@ -73,11 +73,11 @@ const LoginPage = () => {
                     </div>
                     <Link to='/auth/forget-password' state={{ userEmail }} className='text-accent text-sm font-bold hover:underline cursor-pointer'>Forget password?</Link>
                     <div className='flex flex-col gap-1 mt-4'>
-                        <button className='flex justify-center items-center gap-2 bg-accent text-white font-semibold p-2 rounded-sm border-2 hover:opacity-85 duration-300 cursor-pointer' type='submit'>
+                        <button className='flex justify-center items-center gap-4 bg-accent text-white font-semibold p-2 rounded-sm border-2 hover:opacity-85 duration-300 cursor-pointer' type='submit'>
                             <MdOutlineMailOutline className='text-white w-7 h-7' />
                             Login with Email
                         </button>
-                        <button onClick={handleGoogleLogin} className='flex justify-center items-center gap-2 bg-accent text-white font-semibold p-2 rounded-sm border-2 hover:opacity-85 duration-300 cursor-pointer' type='button'>
+                        <button onClick={handleGoogleLogin} className='flex justify-center items-center gap-4 bg-accent text-white font-semibold p-2 rounded-sm border-2 hover:opacity-85 duration-300 cursor-pointer' type='button'>
                             <FaGoogle className='text-white w-7 h-7' />
                             Login with Google
                         </button>

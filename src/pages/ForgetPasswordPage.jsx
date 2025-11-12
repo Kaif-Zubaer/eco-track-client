@@ -39,7 +39,7 @@ const ForgetPasswordPage = () => {
                             <input className='bg-white px-4 py-2 outline-0 mb-4 rounded-sm font-bold' value={showEmail} onChange={(e) => setShowEmail(e.target.value)} type="email" name="email" placeholder='Enter your email' required />
                         </div>
                         <div className='flex flex-col gap-1'>
-                            <button className='flex justify-center items-center gap-2 bg-accent text-white font-semibold p-2 rounded-sm border-2 hover:opacity-85 duration-300 cursor-pointer'>
+                            <button className='flex justify-center items-center gap-4 bg-accent text-white font-semibold p-2 rounded-sm border-2 hover:opacity-85 duration-300 cursor-pointer'>
                                 Send Login Link
                             </button>
                         </div>
