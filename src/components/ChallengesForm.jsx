@@ -187,6 +187,7 @@ const ChallengeForm = () => {
                         readOnly
                     />
                 </div>
+
                 <button
                     type="submit"
                     className="w-full bg-primary text-white font-bold py-2 rounded hover:opacity-85 cursor-pointer duration-300"
