@@ -9,11 +9,11 @@ import Challenges from "../components/Challenges";
 import MyActivities from "../components/MyActivities";
 import Loading from "../components/Loading";
 import ForgetPasswordPage from "../pages/ForgetPasswordPage";
-import MyProfilePage from "../../MyProfilePage";
 import ChallengeDetails from "../components/ChallengeDetails";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import AddChallenge from "../components/AddChallenge";
+import MyProfilePage from "../components/MyProfilePage";
 
 const router = createBrowserRouter([
     {

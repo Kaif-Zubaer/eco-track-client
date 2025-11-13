@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateEmail, updatePassword, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updatePassword, updateProfile } from 'firebase/auth';
 import { auth } from '../firebase/firebase.config';
 
 const googlrProvider = new GoogleAuthProvider();
@@ -39,10 +39,6 @@ const AuthProvider = ({ children }) => {
         return updateProfile(auth.currentUser, updatedData);
     }
 
-    const emailUpdate = (newEmail) => {
-        return updateEmail(auth.currentUser, newEmail);
-    }
-
     const passwordUpdate = (newPassword) => {
         return updatePassword(auth.currentUser, newPassword);
     }
@@ -64,7 +60,6 @@ const AuthProvider = ({ children }) => {
         userLogin,
         googleLogin,
         userUpdate,
-        emailUpdate,
         passwordUpdate,
         forgetpassword,
         userLogout,
