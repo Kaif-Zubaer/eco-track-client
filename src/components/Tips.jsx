@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Loading from './Loading';
 import axios from 'axios';
-import { FaArrowUpLong, FaArrowDownLong,FaRegCircleUser } from "react-icons/fa6";
-import {  FaCalendarAlt } from "react-icons/fa";
+import { FaArrowUpLong, FaArrowDownLong, FaRegCircleUser } from "react-icons/fa6";
+import { FaCalendarAlt } from "react-icons/fa";
 import { BiCategory } from "react-icons/bi";
 
 const Tips = () => {
@@ -10,7 +10,7 @@ const Tips = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/tips')
+        axios.get('https://eco-track-nu-one.vercel.app/tips')
             .then(data => {
                 setTips(data.data);
                 setLoading(false);

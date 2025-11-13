@@ -35,7 +35,7 @@ const ChallengeForm = () => {
         try {
             const challengeData = { ...formData, createdBy: user?.email };
 
-            const res = await axios.post('http://localhost:3000/challenges', challengeData, {
+            const res = await axios.post('https://eco-track-nu-one.vercel.app/challenges', challengeData, {
                 headers: { 'Content-Type': 'application/json' },
             });
 

@@ -19,19 +19,19 @@ const MyActivities = () => {
         const fetchData = async () => {
             try {
                 const createdRes = await axios.get(
-                    `http://localhost:3000/challenges?email=${user.email}`
+                    `https://eco-track-nu-one.vercel.app/challenges?email=${user.email}`
                 );
                 setCreatedChallenges(createdRes.data);
 
                 const joinedRes = await axios.get(
-                    `http://localhost:3000/user_challenges?email=${user.email}`
+                    `https://eco-track-nu-one.vercel.app/user_challenges?email=${user.email}`
                 );
                 const joined = joinedRes.data;
 
                 const joinedWithDetails = await Promise.all(
                     joined.map(async (uc) => {
                         const chRes = await axios.get(
-                            `http://localhost:3000/challenges/${uc.challengeId}`
+                            `https://eco-track-nu-one.vercel.app/challenges/${uc.challengeId}`
                         );
                         return { ...uc, challenge: chRes.data };
                     })
@@ -60,7 +60,7 @@ const MyActivities = () => {
 
         if (result.isConfirmed) {
             try {
-                await axios.delete(`http://localhost:3000/challenges/${id}`);
+                await axios.delete(`https://eco-track-nu-one.vercel.app/challenges/${id}`);
                 setCreatedChallenges((prev) => prev.filter((ch) => ch._id !== id));
                 Swal.fire("Deleted!", "Your challenge has been deleted.", "success");
             } catch {
@@ -137,7 +137,7 @@ const MyActivities = () => {
             if (result.isConfirmed) {
                 try {
                     await axios.patch(
-                        `http://localhost:3000/challenges/${challenge._id}`,
+                        `https://eco-track-nu-one.vercel.app/challenges/${challenge._id}`,
                         result.value
                     );
                     Swal.fire("Updated!", "Challenge updated successfully.", "success");

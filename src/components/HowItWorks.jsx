@@ -7,7 +7,7 @@ const HowItWorks = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/how_it_works_steps')
+    axios.get('https://eco-track-nu-one.vercel.app/how_it_works_steps')
       .then(data => {
         setSteps(data.data);
         setLoading(false);

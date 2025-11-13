@@ -12,7 +12,7 @@ const HeroBanner = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/challenges')
+        axios.get('https://eco-track-nu-one.vercel.app/challenges')
             .then(data => {
                 setChallenges(data.data);
                 setLoading(false);

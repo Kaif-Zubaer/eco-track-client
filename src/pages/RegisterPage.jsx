@@ -72,7 +72,7 @@ const RegisterPage = () => {
                             image: result.user.photoURL,
                         }
 
-                        axios.post('http://localhost:3000/users', newUser, {
+                        axios.post('https://eco-track-nu-one.vercel.app/users', newUser, {
                             headers: {
                                 'Content-Type': 'application/json',
                             }

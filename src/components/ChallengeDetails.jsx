@@ -39,7 +39,7 @@ const ChallengeDetails = () => {
         };
 
         try {
-            const { data } = await axios.post('http://localhost:3000/user_challenges', userChallenge);
+            const { data } = await axios.post('https://eco-track-nu-one.vercel.app/user_challenges', userChallenge);
 
             if (data.success) {
                 setParticipants(prev => prev + 1);
@@ -84,8 +84,7 @@ const ChallengeDetails = () => {
                         <p className="font-medium text-justify">{description}</p>
                     </div>
                     <div className="mt-6">
-                        <button className={`w-fit font-bold py-2 px-6 rounded-sm shadow-lg transition duration-300 ${
-                                joined ? 'bg-gray-400 text-white cursor-not-allowed' : 'bg-accent text-white hover:opacity-85'
+                        <button className={`w-fit font-bold py-2 px-6 rounded-sm shadow-lg transition duration-300 ${joined ? 'bg-gray-400 text-white cursor-not-allowed' : 'bg-accent text-white hover:opacity-85'
                             }`}
                             onClick={handleJoin}
                             disabled={joined}>

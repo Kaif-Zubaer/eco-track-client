@@ -30,13 +30,13 @@ const router = createBrowserRouter([
             },
             {
                 path: "/challenges",
-                loader: () => fetch('http://localhost:3000/challenges'),
+                loader: () => fetch('https://eco-track-nu-one.vercel.app/challenges'),
                 element: <Challenges></Challenges>,
                 hydrateFallbackElement: <Loading></Loading>,
             },
             {
                 path: "/challenges/:id",
-                loader: ({ params }) => fetch(`http://localhost:3000/challenges/${params.id}`),
+                loader: ({ params }) => fetch(`https://eco-track-nu-one.vercel.app/challenges/${params.id}`),
                 element: <ChallengeDetails></ChallengeDetails>,
                 hydrateFallbackElement: <Loading></Loading>,
             },

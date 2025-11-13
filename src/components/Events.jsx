@@ -8,7 +8,7 @@ const Events = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/events')
+        axios.get('https://eco-track-nu-one.vercel.app/events')
             .then(data => {
                 setEvents(data.data);
                 setLoading(false);
