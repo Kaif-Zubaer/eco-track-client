@@ -9,39 +9,80 @@ const Challenges = () => {
     const challenges = useLoaderData();
 
     const [search, setSearch] = useState('');
+    const [categoryFilter, setCategoryFilter] = useState([]);
     const [filteredChallenges, setFilteredChallenges] = useState(challenges);
     const [loading, setLoading] = useState(false);
 
+    const categories = [...new Set(challenges.map(c => c.category))];
+
     useEffect(() => {
         setLoading(true);
+
         const delay = setTimeout(() => {
-            const filtered = challenges.filter(challenge =>
-                challenge.title.toLowerCase().includes(search.toLowerCase()) ||
-                challenge.category.toLowerCase().includes(search.toLowerCase())
-            );
+            const filtered = challenges.filter(challenge => {
+                const matchesSearch =
+                    challenge.title.toLowerCase().includes(search.toLowerCase()) ||
+                    challenge.category.toLowerCase().includes(search.toLowerCase());
+
+                const matchesCategory =
+                    categoryFilter.length === 0 || categoryFilter.includes(challenge.category);
+
+                return matchesSearch && matchesCategory;
+            });
+
             setFilteredChallenges(filtered);
             setLoading(false);
         }, 300);
 
         return () => clearTimeout(delay);
-    }, [search, challenges]);
+    }, [search, categoryFilter, challenges]);
+
+    const handleCategoryChange = (category) => {
+        setCategoryFilter(prev =>
+            prev.includes(category)
+                ? prev.filter(c => c !== category)
+                : [...prev, category]
+        );
+    };
 
     return (
         <div className='mx-6 md:mx-10 lg:mx-30'>
             <h1 className='text-center mt-10 mb-6 md:my-10 text-2xl text-primary font-bold'>All Challenges</h1>
-            <div className='flex flex-col gap-4 md:flex-row md:justify-between md:items-center'>
+            <div className='flex flex-col gap-4 md:flex-row md:justify-between md:items-center mb-4'>
                 <p className='text-lg font-medium'>Number of challenges available: {filteredChallenges.length}</p>
-                <input onChange={(e) => setSearch(e.target.value)} className='border-2 border-primary outline-0 rounded-sm py-2 md:py-1 px-3 font-semibold' type="search" value={search} placeholder='Search...' />
+                <input
+                    onChange={(e) => setSearch(e.target.value)}
+                    className='border-2 border-primary outline-0 rounded-sm py-2 md:py-1 px-3 font-semibold'
+                    type="search"
+                    value={search}
+                    placeholder='Search by title or category...'
+                />
+            </div>
+            <div className='flex flex-wrap gap-2 mb-4'>
+                {
+                    categories.map(category => (
+                        <button
+                            key={category}
+                            onClick={() => handleCategoryChange(category)}
+                            className={`px-4 py-1 border-2 rounded-full text-sm font-semibold ${categoryFilter.includes(category)
+                                ? 'border-accent bg-accent text-white'
+                                : 'border-primary bg-white text-primary'
+                                }`}
+                        >
+                            {category}
+                        </button>
+                    ))
+                }
             </div>
             {
                 loading
-                    ? <Loading></Loading>
+                    ? <Loading ></Loading>
                     : filteredChallenges.length > 0
-                        ? <div className='mx-2  my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6'>
-                            {
-                                challenges.map(challenge => (
+                        ? (
+                            <div className='mx-2 my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6'>
+                                {filteredChallenges.map(challenge => (
                                     <div key={challenge._id} className='border-2 border-primary rounded-sm p-5 bg-base-200 pb-7'>
-                                        <img className='rounded-md' src={challenge.imageUrl} alt="" />
+                                        <img className='rounded-md' src={challenge.imageUrl} alt={challenge.title} />
                                         <h1 className='mt-5 mb-2 text-lg text-accent font-bold'>{challenge.title}</h1>
                                         <div className='flex justify-between items-center mb-2'>
                                             <p className='border border-primary py-1 px-2 rounded-3xl text-sm text-primary font-medium bg-white'>{challenge.category}</p>
@@ -55,13 +96,19 @@ const Challenges = () => {
                                             </div>
                                         </div>
                                         <p className='line-clamp-3 mb-5'>{challenge.description}</p>
-                                        <Link to={`/challenges/${challenge._id}`} className='border-2 border-accent bg-accent p-2 px-4 rounded-sm text-white font-bold cursor-pointer hover:bg-white hover:text-accent duration-350'>View details</Link>
+                                        <Link
+                                            to={`/challenges/${challenge._id}`}
+                                            className='border-2 border-accent bg-accent p-2 px-4 rounded-sm text-white font-bold cursor-pointer hover:bg-white hover:text-accent duration-350'
+                                        >
+                                            View details
+                                        </Link>
                                     </div>
-                                ))
-                            }
-                        </div>
-                        : <div className='flex flex-col justify-center items-center my-10'>
-                            <img src={notFound} alt="" />
+                                ))}
+                            </div>
+                        )
+                        :
+                        <div className='flex flex-col justify-center items-center my-10'>
+                            <img src={notFound} alt="Not Found" />
                             <h1 className='text-primary text-3xl font-bold mt-4'>Challenge Not Found!</h1>
                         </div>
             }

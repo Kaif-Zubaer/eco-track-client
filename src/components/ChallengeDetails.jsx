@@ -1,23 +1,58 @@
-import React from 'react';
+import React, { use, useState } from 'react';
+import { AuthContext } from '../context/AuthContext';
 import { Link, useLoaderData } from 'react-router';
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const ChallengeDetails = () => {
+    const { user } = use(AuthContext);
     const challengeDetails = useLoaderData();
+
+    const userEmail = user?.email;
+
+    const [participants, setParticipants] = useState(challengeDetails.participants);
+    const [joined, setJoined] = useState(false);
+
     const {
+        _id,
         title,
         category,
         description,
         duration,
         target,
-        participants,
         impactMetric,
         createdBy,
         startDate,
         endDate,
         imageUrl
     } = challengeDetails;
+
+    const handleJoin = async () => {
+        const userChallenge = {
+            userId: userEmail,
+            challengeId: _id,
+            status: "Not Started",
+            progress: 0,
+            joinDate: new Date().toISOString()
+        };
+
+        try {
+            const { data } = await axios.post('http://localhost:3000/user_challenges', userChallenge);
+
+            if (data.success) {
+                setParticipants(prev => prev + 1);
+                setJoined(true);
+                toast.success('You have joined the challenge!');
+            } else {
+                toast.error('Failed to join challenge. You might have already joined.');
+            }
+        } catch (error) {
+            console.error(error);
+            toast.error('Error joining challenge.');
+        }
+    };
 
     return (
         <div className="container mx-auto p-4 md:p-8 mb-10">
@@ -49,7 +84,11 @@ const ChallengeDetails = () => {
                         <p className="font-medium text-justify">{description}</p>
                     </div>
                     <div className="mt-6">
-                        <button className="w-fit bg-accent text-white font-bold py-2 px-6 rounded-sm shadow-lg hover:opacity-85 cursor-pointer transition duration-300">
+                        <button className={`w-fit font-bold py-2 px-6 rounded-sm shadow-lg transition duration-300 ${
+                                joined ? 'bg-gray-400 text-white cursor-not-allowed' : 'bg-accent text-white hover:opacity-85'
+                            }`}
+                            onClick={handleJoin}
+                            disabled={joined}>
                             Join Challenge
                         </button>
                     </div>
