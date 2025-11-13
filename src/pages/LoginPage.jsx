@@ -12,12 +12,15 @@ const LoginPage = () => {
 
     const [showPassword, setShowPassword] = useState(false)
     const [userEmail, setUserEmail] = useState("");
+    const [loadingEmail, setLoadingEmail] = useState(false);
+    const [loadingGoogle, setLoadingGoogle] = useState(false);
 
     const location = useLocation();
     const navigate = useNavigate();
 
     const handleLogin = (e) => {
         e.preventDefault();
+        setLoadingEmail(true);
 
         const form = e.target;
 
@@ -30,25 +33,29 @@ const LoginPage = () => {
                 setTimeout(() => {
                     toast.success('Login Successful')
                 }, 300);
-                navigate(`${location.state ? location.state : "/"}`);
+                navigate(location.state?.from || '/');
             })
             .catch(() => {
                 toast.error('Invalid email or password')
-            });
+            })
+            .finally(() => setLoadingEmail(false));
     }
 
     const handleGoogleLogin = () => {
+        setLoadingGoogle(true);
+
         googleLogin()
             .then(result => {
                 setUser(result.user);
                 setTimeout(() => {
                     toast.success('Login Successful')
                 }, 300);
-                navigate(`${location.state ? location.state : "/"}`);
+                navigate(location.state?.from || '/');
             })
             .catch(error => {
                 toast.error(error.code);
             })
+            .finally(() => setLoadingGoogle(false));
     }
 
     return (
@@ -75,11 +82,11 @@ const LoginPage = () => {
                     <div className='flex flex-col gap-1 mt-4'>
                         <button className='flex justify-center items-center gap-4 bg-accent text-white font-semibold p-2 rounded-sm border-2 hover:opacity-85 duration-300 cursor-pointer' type='submit'>
                             <MdOutlineMailOutline className='text-white w-7 h-7' />
-                            Login with Email
+                            {loadingEmail ? 'Logging in...' : 'Login with Email'}
                         </button>
                         <button onClick={handleGoogleLogin} className='flex justify-center items-center gap-4 bg-accent text-white font-semibold p-2 rounded-sm border-2 hover:opacity-85 duration-300 cursor-pointer' type='button'>
                             <FaGoogle className='text-white w-7 h-7' />
-                            Login with Google
+                            {loadingGoogle ? 'Logging in...' : 'Login with Google'}
                         </button>
                     </div>
                 </form>
