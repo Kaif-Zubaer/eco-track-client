@@ -6,6 +6,7 @@ import { AuthContext } from '../context/AuthContext';
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const RegisterPage = () => {
     const { createUser, googleLogin, setUser, userUpdate } = use(AuthContext);
@@ -64,6 +65,21 @@ const RegisterPage = () => {
                             toast.success('Registration Successful')
                         }, 300);
                         navigate("/");
+
+                        const newUser = {
+                            name: result.user.displayName,
+                            email: result.user.email,
+                            image: result.user.photoURL,
+                        }
+
+                        axios.post('http://localhost:3000/users', newUser, {
+                            headers: {
+                                'Content-Type': 'application/json',
+                            }
+                        })
+                            .then(response => {
+                                const data = response.data;
+                            })
                     })
                     .catch((error) => {
                         toast.error(error.code);

@@ -13,6 +13,7 @@ import MyProfilePage from "../../MyProfilePage";
 import ChallengeDetails from "../components/ChallengeDetails";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
+import AddChallenge from "../components/AddChallenge";
 
 const router = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
             {
                 path: "/my-activities",
                 element: <PrivateRoute><MyActivities></MyActivities></PrivateRoute>,
+            },
+            {
+                path: "/add-challenge",
+                element: <PrivateRoute><AddChallenge></AddChallenge></PrivateRoute>,
             },
         ]
     },

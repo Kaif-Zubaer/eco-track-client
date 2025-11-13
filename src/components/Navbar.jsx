@@ -29,6 +29,10 @@ const Navbar = () => {
         <li className='transition-transform hover:-translate-y-0.5 duration-300'><NavLink to="/">Home</NavLink></li>
         <li className='transition-transform hover:-translate-y-0.5 duration-300'><NavLink to="/challenges">Challenges</NavLink></li>
         <li className='transition-transform hover:-translate-y-0.5 duration-300'><NavLink to="/my-activities">My Activities</NavLink></li>
+        {
+            user &&
+            <li className='transition-transform hover:-translate-y-0.5 duration-300'><NavLink to="/add-challenge">Add Challenge</NavLink></li>
+        }
     </>
 
     const linksSmallDevice = <>

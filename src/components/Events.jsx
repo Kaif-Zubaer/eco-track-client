@@ -17,11 +17,11 @@ const Events = () => {
 
     return (
         <div>
-            <section className="bg-[#f5faf7] py-12 px-6 md:px-8 xl:px-25">
+            <section className="bg-[#f5faf7] py-12 px-4 md:px-8 xl:px-25">
                 <div className="max-w-6xl mx-auto text-center mb-8">
-                    <h2 className="text-3xl md:text-4xl font-bold text-accent  mb-3">Upcoming Events</h2>
-                    <p className="text-gray-600">Join upcoming community activities and make a positive environmental impact.</p>
-                </div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-primary  mb-3">Upcoming Events</h2>
+                    <p className="text-gray-600">Join upcoming community activities and make a positive environmental impact.</p></div>
+
                 {
                     loading
                         ? <Loading></Loading>
