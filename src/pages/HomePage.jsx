@@ -5,7 +5,7 @@ import ActiveChallenges from '../components/ActiveChallenges';
 import Tips from '../components/Tips';
 import Events from '../components/Events';
 import WhyGoGreen from '../components/WhyGoGreen';
-import HowItWork from '../components/HowItWork';
+import HowItWorks from '../components/HowItWorks';
 
 const HomePage = () => {
     return (
@@ -16,7 +16,7 @@ const HomePage = () => {
             <Tips></Tips>
             <Events></Events>
             <WhyGoGreen></WhyGoGreen>
-            <HowItWork></HowItWork>
+            <HowItWorks></HowItWorks>
         </div>
     );
 };
