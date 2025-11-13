@@ -4,6 +4,8 @@ import LiveStatistics from '../components/LiveStatistics';
 import ActiveChallenges from '../components/ActiveChallenges';
 import Tips from '../components/Tips';
 import Events from '../components/Events';
+import WhyGoGreen from '../components/WhyGoGreen';
+import HowItWork from '../components/HowItWork';
 
 const HomePage = () => {
     return (
@@ -13,6 +15,8 @@ const HomePage = () => {
             <ActiveChallenges></ActiveChallenges>
             <Tips></Tips>
             <Events></Events>
+            <WhyGoGreen></WhyGoGreen>
+            <HowItWork></HowItWork>
         </div>
     );
 };
