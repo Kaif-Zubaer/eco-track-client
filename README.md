@@ -55,6 +55,23 @@ EcoTrack is a community-driven platform that encourages eco-conscious individual
 
 ---
 
+## Installation
+
+Clone the repo and install dependencies:
+
+```
+https://github.com/Kaif-Zubaer/eco-track-client.git
+cd eco-track-client
+npm install
+```
+
+Run the application:
+
+```
+npm run dev
+```
+---
+
 ## GitHub Repositories
 
 - **Client:** [Github Client Repo URL Here](https://github.com/Kaif-Zubaer/eco-track-client) 
